@@ -23,7 +23,7 @@ function showWelcome() {
 }
 
 function checkLesson() {
-  $("#toggle").prop("checked", true);
+  
   let timeNow = checkTime();
   let weekDay = checkDay();
   console.log(weekDay)
