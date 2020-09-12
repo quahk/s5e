@@ -26,36 +26,37 @@
   <body>
     <nav>
         <img class="logo center" src="assets/logo.png" alt="logo"></img>
-        <div>
-          <h1>今日日期：2020年9月12日</h1>
+        <div id="navDate">
+          <h1>今日日期：{{ todayDate }}</h1>
         </div>
     </nav>
 
     <div class="container card" id="app">
+
+      <div id="newFeature">
+        <h1>全新設計</h1>
+        <h1>9月14日亮相</h1>
+      </div>
+      
       <div id="duties">
         <h1>今日值日生：</h1>
         <h1>{{ duties }}</h1>
       </div>
+
+      <div id="teachers">
+      <h1>熱烈歡迎</h1>
+      <h1 class="rainbow-text">{{ currentTeacher }}</h1>
+      <h1>使用本班電腦瀏覽器！</h1>
+      </div>
+
+      <div id="lesson">
+        <p><h1>現時課節：{{ currentLesson }}</h1></p>
+        <p><h1>下一課節：{{ nextLesson }}</h1></p>
+      </div>
+
     </div>
     
-      <div id="teachers">
-        <!--
-          <h1 id="chinese">班主任 郭老師</h1>
-      <h1 id="english">English Mr. Sebastian</h1>
-      <h1 id="maths">數學科 潘老師</h1>
-      <h1 id="physics">物理科 綱Sir</h1>
-      <h1 id="music">音樂科 葉Sir</h1>
-      <h1 id="international">國際關係科 李俊sir</h1>
-      <h1 id="careerPlaning">Career Planing Alfred & Samuel Sir</h1>
-      <h1 id="bible">聖經科 歐陽牧師 平安！</h1>
-      <h1 id="accounting">會計科 Mark周老師</h1>
-      <h1 id="biology">生物科 梁老師</h1>
-      <h1 id="chemistry">化學科 古成威老師</h1>
-        -->
-      <h1 id="veryWelcome">熱烈歡迎</h1>
-      
-      <h1 id="useBrowser">使用本班電腦瀏覽器！</h1>
-      </div>
+     
       <!--<div id="notifyBox">
         <h1>號外！重大消息！</h1>
         <h2>突發！泥工解體！</h2>
