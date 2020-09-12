@@ -1,0 +1,64 @@
+:root {
+    --button-width: 250px;
+    --button-height: 147.5px;
+    --toggle-diameter: 127.5px;
+    --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
+    --toggle-shadow-offset: 10px;
+    --toggle-wider: 166.5px;
+    --color-grey: #E9E9E9;
+    --color-dark-grey: #39393D;
+    --color-green: #30D158;
+}
+
+.container {
+    margin: 2em;
+}
+
+.iosButton {
+    display: inline-block;
+    margin: 0;
+    width: var(--button-width);
+    height: var(--button-height);
+    background-color: var(--color-grey);
+    border-radius: calc(var(--button-height) / 2);
+    position: relative;
+    text-align: left !important;
+    transition: .3s all ease-in-out;
+}
+
+.iosButton::after {
+    content: '';
+    display: inline-block;
+    width: var(--toggle-diameter);
+    height: var(--toggle-diameter);
+    border-radius: calc(var(--toggle-diameter) / 2);
+    background-color: #fff;
+    position: absolute;
+    top: var(--button-toggle-offset);
+    box-shadow: var(--toggle-shadow-offset) 0 12px rgba(0, 0, 0, .1);
+    transform: translateX(var(--button-toggle-offset));
+    transition: .3s all ease-in-out;
+}
+
+input[type="checkbox"]:checked + .iosButton {
+    background-color: var(--color-green);
+}
+
+input[type="checkbox"]:checked + .iosButton::after {
+    box-shadow: calc(var(--toggle-shadow-offset) * -1) 0 12px rgba(0, 0, 0, .1);
+    transform: translateX(calc(var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)));
+}
+
+input[type='checkbox']:active + .iosButton::after {
+    width: var(--toggle-wider);
+}
+
+input[type='checkbox']:checked:active + .iosButton::after {
+    transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
+}
+
+input[type="checkbox"] {
+    display: none;
+  }
+
+

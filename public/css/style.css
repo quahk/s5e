@@ -1,0 +1,62 @@
+@font-face {
+  font-family: ProductSans;
+  src: url(../fonts/Product-Sans-Regular.ttf);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: white;
+  font-family: ProductSans;
+}
+
+.container {
+  margin: 0;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.card {
+  width: auto;
+  padding: 2.5em;
+  font-size: 1.5em;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+div#teachers h1 {
+  display: none;
+ 
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  align-items: center;
+  padding: 30px 10px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+nav img {
+  height: 100%;
+  padding: 0.5em;
+  width: auto;
+  margin-left: 2em;
+}
+
+nav div {
+  margin-right: 2em;
+}
+
+#veryWelcome {
+  font-size: 6em !important;
+}
+
+#useBrowser {
+  font-size: 3.5em !important;
+}

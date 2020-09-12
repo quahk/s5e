@@ -1,53 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <!-- Compiled and minified CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quahk S5E</title>
+    <link rel="stylesheet" href="css/batteryStyle.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/iosButtonStyle.css">
+     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
+    <title>Quahk</title>
+    <style>
+      
+      span#q {
+        color: #346fef;
+      }
+      span#u {
+        color: #e22c29;
+      }
+      span#a {
+        color: #f5b00c;
+      }
+      span#h {
+        color: #2f9d41;
+      }
+    </style>
   </head>
-  <body>
-    <div class="center-align valign-wrappe">
-      <!--<img src="assets/logo.png" alt="" />-->
-      <iframe
-        src="https://docs.google.com/presentation/d/e/2PACX-1vQKu-owqBaLjWGJUy6hGLhTHPG87N6mR9vdJ3N_xWywYpljbU0QqSKhsdZqSH3U6gXxYC2wJXZgF1Bn/embed?start=false&loop=false&delayms=3000"
-        frameborder="0"
-        width="960"
-        height="569"
-        allowfullscreen="true"
-        mozallowfullscreen="true"
-        webkitallowfullscreen="true"
-      ></iframe>
+  <body onload="checkLesson()">
+    <nav>
+        <img class="logo center" src="assets/logo.png" alt="logo"></img>
+        <div>
+          <h1>今日日期：2020年9月12日</h1>
+        </div>
+    </nav>
+
+    <div class="container card" id="app">
+      <div id="duties">
+        <h1>今日值日生：</h1>
+        <h1>{{ duties1 }} & {{ duties2 }}</h1>
+      </div>
     </div>
+    
+      <div id="teachers">
+      <h1 id="veryWelcome">熱烈歡迎</h1>
+      <h1 id="chinese">班主任 郭老師</h1>
+      <h1 id="english">English Mr. Sebastian</h1>
+      <h1 id="maths">數學科 潘老師</h1>
+      <h1 id="physics">物理科 綱Sir</h1>
+      <h1 id="music">音樂科 葉Sir</h1>
+      <h1 id="international">國際關係科 李俊sir</h1>
+      <h1 id="careerPlaning">Career Planing Alfred & Samuel Sir</h1>
+      <h1 id="bible">聖經科 歐陽牧師 平安！</h1>
+      <h1 id="accounting">會計科 Mark周老師</h1>
+      <h1 id="biology">生物科 梁老師</h1>
+      <h1 id="chemistry">化學科 古成威老師</h1>
+      <h1 id="useBrowser">使用本班電腦瀏覽器！</h1>
+      </div>
+      <!--<div id="notifyBox">
+        <h1>號外！重大消息！</h1>
+        <h2>突發！泥工解體！</h2>
+        <a href="dirtDissolution.html">按我看更多資訊</a>
+      </div>
+    -->
+    
+      <div class="container">
+        <h1>Display ToyBin Mini Game</h1>
+      <label for="toggle">
+        <input type="checkbox" id="toggle">
+        <span class="iosButton"></span>
+      </label>
+      </div>
+      <div class="container" id="batteryGame">
+      <h1>Dear comrades!</h1>
+      <h2>How fast you can charge the nuclear bomb?</h2>
+      <div id="battery" class="alert">
+        <div id="battery-fill">
+          0%
+        </div>
+      </div>
+      <button id="charge-button">Charge!</button>
+      <button id="reset-button">Give me another bomb!</button>
+</div>
+      <!--
+      <p style="font-size: 24; margin: 0; color: black">我有我的方式</p>
+      <p>
+        <span id="q">Q</span><span id="u">u</span><span id="a">a</span
+        ><span id="q">h</span><span id="h">k</span
+        ><span style="color: black">有</span><span id="q">Q</span
+        ><span id="u">u</span><span id="a">a</span><span id="q">h</span
+        ><span id="h">k</span><span style="color: black">的</span
+        ><span id="q">Q</span><span id="u">u</span><span id="a">a</span
+        ><span id="q">h</span><span id="h">k</span
+        ><span style="color: black">式</span>
+      </p>
+      -->
+    
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"
+    ></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"
+    ></script>
 
-    <script>
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyDlG2-ESHFcdwmGTnrX9Ioz-DbIazKY35I",
-        authDomain: "quahk-s6e.firebaseapp.com",
-        databaseURL: "https://quahk-s6e.firebaseio.com",
-        projectId: "quahk-s6e",
-        storageBucket: "quahk-s6e.appspot.com",
-        messagingSenderId: "98530986080",
-        appId: "1:98530986080:web:6f3438b86742007d055b05",
-        measurementId: "G-19Z7W7ZTLX",
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
+    <script defer src="js/init-firebase.js"></script>
+    <script src="js/batteryGame.js"></script>
+    <script src="js/welcomeTeacher.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/app.js"></script>
+     
     </script>
   </body>
 </html>
