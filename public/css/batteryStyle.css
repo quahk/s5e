@@ -1,70 +1,93 @@
 #battery {
-    border: 10px solid silver;
-    position: relative;
-    border-top-width: 0;
-    border-bottom-width: 0;
-    border-radius: 10px;
-    background: linear-gradient(to bottom, #ededed, white 15%, lightgrey 90%, #ededed);
+  border: 10px solid silver;
+  position: relative;
+  border-top-width: 0;
+  border-bottom-width: 0;
+  border-radius: 10px;
+  background: linear-gradient(to bottom, #ededed, white 15%, lightgrey 90%, #ededed);
+}
+
+#batteryGame {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  padding: 2.5em;
+  padding-top: 10%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Black background with opacity */
+  background-color: #fff;
+  
 }
 
 #battery-fill {
-    background: lightgreen;
-    padding: 3em;
-    width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
-    background: lightgreen linear-gradient(to bottom, lightgreen, #e0f9bb  15%, #38de25  90%, #e0f9bb );
+  background: lightgreen;
+  padding: 3em;
+  width: 0;
+  border-top-width: 0;
+  border-bottom-width: 0;
+  background: lightgreen linear-gradient(to bottom, lightgreen, #e0f9bb 15%, #38de25 90%, #e0f9bb);
 }
 
 #battery:before {
-    content: '';
-    position: absolute;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    background: linear-gradient(to bottom, silver, white, #333, lightgray, gray);
-    width: 10px;
-    height: 30px;
-    right: -15px;
-    top: calc(50% - 15px);
-    
+  content: '';
+  position: absolute;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background: linear-gradient(to bottom, silver, white, #333, lightgray, gray);
+  width: 10px;
+  height: 30px;
+  right: -15px;
+  top: calc(50% - 15px);
 }
 
 #battery.alert #battery-fill {
-    background: lightcoral linear-gradient(to bottom, pink, red);
+  background: lightcoral linear-gradient(to bottom, pink, red);
 }
 
 @keyframes blink {
-    0% {background: lightpink}
-    50% {background: red}
-    100% {background: lightpink}
+  0% {
+    background: lightpink;
   }
-
-#battery.middle #battery-fill {
-    background: lightyellow linear-gradient(to bottom, lightyellow, yellow);
+  50% {
+    background: red;
+  }
+  100% {
+    background: lightpink;
+  }
 }
 
-#charge-button, #reset-button {
-    margin-top: 3em;
-    padding: 1em;
-    border: 0;
-    width: 100%;
-    height: 150px;
-    border: 2px solid blue;
-    border-radius: 20px;
-    cursor: pointer;
-    outline: none;
-    font-weight: bold;
-    color: blue;
+#battery.middle #battery-fill {
+  background: lightyellow linear-gradient(to bottom, lightyellow, yellow);
+}
+
+#charge-button,
+#reset-button {
+  margin-top: 3em;
+  padding: 1em;
+  border: 0;
+  width: 100%;
+  height: 150px;
+  border: 2px solid blue;
+  border-radius: 20px;
+  cursor: pointer;
+  outline: none;
+  font-weight: bold;
+  color: blue;
 }
 
 #reset-button {
-    display: none;
+  display: none;
 }
 
-#charge-button:hover, #reset-button:hover {
-    background: lightblue;
+#charge-button:hover,
+#reset-button:hover {
+  background: lightblue;
 }
 
-#charge-button:active, #reset-button:active {
-    background: #f9c4d2;
+#charge-button:active,
+#reset-button:active {
+  background: #f9c4d2;
 }

@@ -15,7 +15,23 @@ function setup() {
         location.replace('../index.html')
 
     } else {
-        alert('Already setup a account!');
+        let userEnterName = prompt('enter your username la bull!');
+        let userEnterPw = prompt('then enter your password:');
+        let adminName = localStorage.getItem('adminName');
+        let adminPw = localStorage.getItem('adminPw');
+
+        if (userEnterName == adminName && userEnterPw == adminPw) {
+            let duties1 = prompt('enter new duty 1:');
+            let duties2 = prompt('enter new duty 2:');
+
+            localStorage.setItem('duties1', duties1);
+            localStorage.setItem('duties2', duties2);
+
+            alert('Success! Returning to system!');
+        } else {
+            alert('sth wrong in username or password... try again');
+            setup();
+        }
 
         location.replace('../index.html');
     }
