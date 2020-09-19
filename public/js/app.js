@@ -297,7 +297,7 @@ function fadeOutAllEm() {
   $('#tools').fadeOut('fast');
   $('nav').fadeOut('fast');
   setTimeout(() => {
-    $('#app-loader').fadeIn('slow');
+  $('#app-loader').fadeIn('slow');
   $('#app-loader').css('display', 'flex');
   
   }, 1500);
