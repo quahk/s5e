@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="css/batteryStyle.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/iosButtonStyle.css">
+    <link rel="stylesheet" href="css/material-progress.css">
      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     
     <title>Quahk</title>
@@ -65,12 +66,27 @@
       </div>
     -->
 
-    <div class="container">
-      <div class="card" style="width: 50%;">
-        <h1>ToyBun Mini Game</h1>
-        <a href="#" id="startToyBunGame"><h1>Start</h1></a>
+    <div id="tools">
+      <div class="card half" style="margin-left: 1em; margin-top: 2em; float: left;">
+        <h1 class="rainbow-text">ToyBun Mini Game</h1>
+        <button id="startGame1Btn"><h1>Start</h1></button>
+      </div>
+      <div class="card half" style="margin-right: 1em; margin-top: 2em; float: right;">
+        <h1>ToyBun Mini Game 2</h1>
+        <button><h1>Start</h1></button>
       </div>
     </div>
+
+    <div id="app-loader">
+      <div>
+      <h1>ToyBun's Mini Game</h1>
+      <div class="progress" >
+        <div class="indeterminate"></div>
+      </div>
+    </div>
+    </div>
+
+  
     <!--
       <div class="container" >
         <h1>Display ToyBun Mini Game</h1>
@@ -78,8 +94,9 @@
         <input type="checkbox" id="toggle">
         <span class="iosButton"></span>
       </label>
+    </div>
       -->
-      </div>
+     
       <div id="batteryGame">
       <h1>Dear comrades!</h1>
       <h2>How fast you can charge the nuclear bomb?</h2>

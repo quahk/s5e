@@ -286,9 +286,20 @@ subject cheat sheet
 
 */
 
-$('#startToyBunGame').on('click', () => {
+$('#startGame1Btn').on('click', () => {
 
-  document.getElementById('batteryGame').style.display = 'block';
-  
+  fadeOutAllEm();
   
 });
+
+function fadeOutAllEm() {
+  $('#app').fadeOut('fast');
+  $('#tools').fadeOut('fast');
+  $('nav').fadeOut('fast');
+  setTimeout(() => {
+     $('#app-loader').css('display', 'flex');
+  $('#app-loader').fadeIn('fast');
+  }, 1500);
+ 
+}
+
