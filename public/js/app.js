@@ -10,14 +10,15 @@ var app = new Vue({
     inClass: '',
     currentLesson: '',
     nextLesson: '',
+    inTools: false,
   },
   mounted() {
     this.inClass = this.checkLessons();
 
-    if (this.inClass != false) {
+    if (this.inClass != false && this.inTools == false) {
       this.classroomMode();
-    } 
-    
+    }
+
     let d = new Date();
 
     this.todayDate = d.toLocaleDateString();
@@ -286,21 +287,57 @@ subject cheat sheet
 
 */
 
-$('#startGame1Btn').on('click', () => {
-
-  fadeOutAllEm();
-  
+$('#startGame1Btn').on('click', async () => {
+  await switchToTools('game1Load', 'batteryGame');
 });
 
-function fadeOutAllEm() {
+$('#startGame2Btn').on('click', async () => {
+  await switchToTools('game2Load', 'randomStudentPicker');
+});
+
+async function switchToTools(toolLoadingName, toolName) {
+  app.inTools = true;
   $('#app').fadeOut('fast');
   $('#tools').fadeOut('fast');
   $('nav').fadeOut('fast');
-  setTimeout(() => {
-  $('#app-loader').fadeIn('slow');
-  $('#app-loader').css('display', 'flex');
+
+  await new Promise((res, rej) => {
+    setTimeout(() => {
+      $('#app-loader').fadeIn('slow');
+      $('#app-loader').css('display', 'flex');
+      res();
+    }, 1200);
+  });
+
+  $('#' + toolLoadingName).fadeIn('fast');
+
+  await new Promise((res, rej) => {
+    setTimeout(() => {
+      $('#' + toolLoadingName).fadeOut('fast');
+      res();
+    }, 4000);
+  });
+
+  await new Promise((res, rej) => {
+    setTimeout(() => {
+      $('#' + toolName).fadeIn('slow');
+      res();
+    }, 500);
+  });
+
   
-  }, 1500);
- 
 }
+
+function exitTool() {
+  $('.close').parent().fadeOut('fast');
+  //$('#app').fadeOut('fast');
+  $('#tools').fadeIn('fast');
+  $('nav').fadeIn('fast');
+  app.inTools = false;
+  let status = app.checkLessons();
+  if (status != false) {
+    $('#app').fadeIn('fast');
+  }
+}
+
 

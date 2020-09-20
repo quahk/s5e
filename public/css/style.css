@@ -26,7 +26,7 @@ body {
   width: auto;
   margin: 0;
   padding: 2.5em;
-  font-size: 1.5em;
+  font-size: 1.2em;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
 }
 
@@ -60,10 +60,23 @@ button {
 button:hover {
   background:#e4e4e4;
   border-radius: 2%;
+  cursor: pointer;
 }
 
 button:active {
   border: 0;
+  outline: none;
+}
+
+button:focus {
+  border: 0;
+  outline: none;
+}
+
+#random {
+  border: 0;
+  background:#e4e4e4;
+  border-radius: 5.4%;
 }
 
 #app-loader {
@@ -71,6 +84,25 @@ button:active {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+}
+
+#app-loader>div {
+  display: none;
+}
+
+#randomStudentPicker {
+  display: none;
+  position: fixed; /* Sit on top of the page content */
+  
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  padding: 2.5em;
+  padding-top: 15%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Black background with opacity */
+  background-color: #fff;
 }
 
 nav {
@@ -91,6 +123,32 @@ nav img {
 
 nav div {
   margin-right: 2em;
+}
+
+.close {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
 }
 
 .rainbow-text {
