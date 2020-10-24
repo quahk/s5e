@@ -295,6 +295,10 @@ $('#startGame2Btn').on('click', async () => {
   await switchToTools('game2Load', 'randomStudentPicker');
 });
 
+$('#startGame3Btn').on('click', async () => {
+  await switchToTools('game3Load', 'countGame');
+});
+
 async function switchToTools(toolLoadingName, toolName) {
   app.inTools = true;
   $('#app').fadeOut('fast');
@@ -315,7 +319,7 @@ async function switchToTools(toolLoadingName, toolName) {
     setTimeout(() => {
       $('#' + toolLoadingName).fadeOut('fast');
       res();
-    }, 4000);
+    }, 2000);
   });
 
   await new Promise((res, rej) => {

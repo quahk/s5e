@@ -3,6 +3,11 @@
   src: url(../fonts/Product-Sans-Regular.ttf);
 }
 
+@font-face {
+  font-family: jf;
+  src: url(../fonts/jf-openhuninn-1.1.ttf);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -12,7 +17,7 @@ body {
   padding: 0;
   text-align: center;
   background: white;
-  font-family: ProductSans;
+  font-family: ProductSans, jf;
 }
 
 .container {
@@ -103,6 +108,45 @@ button:focus {
   right: 0;
   bottom: 0; /* Black background with opacity */
   background-color: #fff;
+}
+
+#countGame {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  padding: 2.5em;
+  padding-top: 10%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Black background with opacity */
+  background-color: #fff;
+}
+
+#message {
+  font-size: 2em;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  line-height: 100px;
+}
+
+#numbers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));  
+  grid-column-gap: 3px;
+  grid-row-gap: 3px;
+}
+#numbers .number {
+  border: 1px solid gold;
+  background: lightyellow;
+  padding: 1em;  
+  text-align: center;
+  cursor: pointer;
+}
+#numbers .number:hover {
+  background: yellow;
 }
 
 nav {
