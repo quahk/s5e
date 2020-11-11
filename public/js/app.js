@@ -4,7 +4,7 @@ var app = new Vue({
   el: '#app',
   data: {
     duties: localStorage.getItem('duties1') + '號 & ' + localStorage.getItem('duties2') + '號',
-    teachers: ['班主任 郭老師', 'Mr. Sebastien', '數學科 潘sir', '物理科 綱Sir', '音樂科 葉Sir', '國際關係科 李俊sir', 'Career Planing Alfred & Samuel Sir', '聖經科 歐陽牧師 平安！', '會計科 Mark周老師', '生物科 梁老師', '化學科 古成威老師', '地理科 陳Sir', '班主席 Edward'],
+    teachers: ['班主任 郭老師', 'Mr. Sebastien', '數學科 潘sir', '物理科 綱Sir', '音樂科 葉Sir', '國際關係科 李俊sir', 'Career Planing Alfred & Samuel Sir', '聖經科 歐陽牧師 平安！', '會計科 Miss Fiona', '生物科 梁老師', '化學科 古成威老師', '地理科 陳Sir', '班主席 Edward'],
     lessons: ['中文', 'English', '數學', '物理', '音樂', '國際關係', 'Career Planing', '聖經', '會計', '生物', '化學', '地理', '周會', '品德公民', '--'],
     currentTeacher: '',
     inClass: '',
@@ -295,6 +295,10 @@ $('#startGame2Btn').on('click', async () => {
   await switchToTools('game2Load', 'randomStudentPicker');
 });
 
+$('#startGame3Btn').on('click', async () => {
+  await switchToTools('game3Load', 'ballGame');
+});
+
 async function switchToTools(toolLoadingName, toolName) {
   app.inTools = true;
   $('#app').fadeOut('fast');
@@ -315,7 +319,7 @@ async function switchToTools(toolLoadingName, toolName) {
     setTimeout(() => {
       $('#' + toolLoadingName).fadeOut('fast');
       res();
-    }, 4000);
+    }, 2000);
   });
 
   await new Promise((res, rej) => {

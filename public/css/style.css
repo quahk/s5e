@@ -93,7 +93,6 @@ button:focus {
 #randomStudentPicker {
   display: none;
   position: fixed; /* Sit on top of the page content */
-  
   width: 100%; /* Full width (cover the whole page) */
   height: 100%; /* Full height (cover the whole page) */
   padding: 2.5em;
@@ -103,6 +102,51 @@ button:focus {
   right: 0;
   bottom: 0; /* Black background with opacity */
   background-color: #fff;
+}
+
+#ballGame {
+  display: none;
+  position: fixed; /* Sit on top of the page content */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  padding: 2.5em;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Black background with opacity */
+  background-color: #fff;
+}
+
+#ballGameFrame {
+    position: relative;
+    border: 3px solid black;
+    height: 80vh;
+}
+
+#ballGame button {
+  width: 10%;
+  height: 10%;
+  margin-left: 2em;
+  margin-bottom: 1.5em;
+  font-size: 1.5em;
+}
+
+#avatar {
+    width: 20px;
+    height: 20px;
+    background: gold;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.enemy {
+    width: 20px;
+    height: 20px;
+    background: red;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 nav {

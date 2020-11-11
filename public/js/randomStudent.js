@@ -23,7 +23,7 @@ var students = [
   { Student_ID: 19, Student_Name: '20' },
   { Student_ID: 20, Student_Name: '21' },
   { Student_ID: 21, Student_Name: '22' },
-  { Student_ID: 22, Student_Name: '23' },
+  //{ Student_ID: 22, Student_Name: '23' },
   { Student_ID: 23, Student_Name: '24' },
   { Student_ID: 24, Student_Name: '25' },
   { Student_ID: 25, Student_Name: '26' },
