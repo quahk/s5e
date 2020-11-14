@@ -1,3 +1,5 @@
+(function() {
+
 const KEY = {
   LEFT: 37,
   UP: 38,
@@ -15,6 +17,9 @@ let keyStatus = {
   left: false,
   right: false,
 };
+
+let startTimeStamp;
+let endTimeStamp;
 
 document.addEventListener('keydown', (e) => {
   //console.log(e.keyCode);
@@ -52,7 +57,13 @@ let gameData = {
   enemySpeed: 1,
   enemyX: 0,
   enemyY: 0,
+  score: 0,
 };
+
+let level = {  
+  scorePerIncrease: 10,
+  scorePerNearlyHit: 50,
+}
 
 function render() {
   avatar.style.left = gameData.x + 'px';
@@ -95,18 +106,54 @@ function moveEnemy() {
 }
 
 function checkCollision() {
-  if (Math.abs(gameData.x - gameData.enemyX) < 15 && Math.abs(gameData.y - gameData.enemyY) < 15) {
-    gameData.enemyX = 0;
-    gameData.enemyY = 0;
+  if ((Math.abs(gameData.x-gameData.enemyX) < 20 ) && (Math.abs(gameData.y-gameData.enemyY) < 20)) {
+    nearlyHit();
+  }
 
-    keyStatus.top = false;
-    keyStatus.down = false;
-    keyStatus.left = false;
-    keyStatus.right = false;
+  if (Math.abs(gameData.x - gameData.enemyX) < 15 && Math.abs(gameData.y - gameData.enemyY) < 15) {
+    let modeNow = $('#ballGameMode').text();
+    if (modeNow == '自由模式') {
+      gameData.enemyX = 0;
+      gameData.enemyY = 0;
+      keyStatus.top = false;
+      keyStatus.down = false;
+      keyStatus.left = false;
+      keyStatus.right = false;
+    } else {
+      clearTimeout();
+      endTimeStamp = Date.now();
+      gameData.enemyX = 0;
+      gameData.enemyY = 0;
+      gameData.enemySpeed = 1;
+      gameData.speed = 2;
+      gameData.x = 200;
+      gameData.y = 200;
+      keyStatus.top = false;
+      keyStatus.down = false;
+      keyStatus.left = false;
+      keyStatus.right = false;
+      alert('You used: ' + ((endTimeStamp - startTimeStamp)/1000) + 's');
+      $('#ballGameMode').text('自由模式');
+      $('#startBallGame').text('Start');
+    }
+    
   }
 }
 
+function increaseScore() {
+  gameData.score += level.scorePerIncrease;
+}
+
+function nearlyHit() {
+  gameData.score += level.scorePerNearlyHit;
+}
+
+let tick = 0;
 setInterval(() => {
+  tick += 1;
+    if (tick % 30 === 0) {
+      increaseScore();    
+    }
   moveEnemy();
   moveAvatar();
   checkCollision();
@@ -114,10 +161,23 @@ setInterval(() => {
 }, 1000 / 120);
 
 $('#startBallGame').on('click', () => {
-    $('#ballGameMode').text('Difficulty: Quahkmatically Easy')
+    if ($('#startBallGame').text() == 'Stop') {
+      endTimeStamp = Date.now();
+      alert('You used: ' + ((endTimeStamp - startTimeStamp)/1000) + 's');
+    }
+
+    $('#ballGameMode').text('Difficulty: Quahkmatically Easy');
+    gameData.enemyX = 0;
+    gameData.enemyY = 0;
+    gameData.x = 200;
+    gameData.y = 200;
+    startTimeStamp = Date.now();
+    $('#startBallGame').text('Stop');
     setTimeout(() => {
         $('#ballGameMode').text('Difficulty: Super Easy');
         gameData.speed = 3;
         gameData.enemySpeed = 2;
     }, 10000);
-})
+});
+
+})();
