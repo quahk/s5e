@@ -70,6 +70,7 @@ function render() {
   avatar.style.top = gameData.y + 'px';
   enemy.style.left = gameData.enemyX + 'px';
   enemy.style.top = gameData.enemyY + 'px';
+  $('#ballGameScore').text(gameData.score);
 }
 
 function moveAvatar() {
@@ -120,7 +121,9 @@ function checkCollision() {
       keyStatus.left = false;
       keyStatus.right = false;
     } else {
-      clearTimeout();
+      if ($('#ballGameMode').text() == 'Difficulty: Quahkmatically Easy') {
+        clearTimeout(level2);
+      }
       endTimeStamp = Date.now();
       gameData.enemyX = 0;
       gameData.enemyY = 0;
@@ -132,7 +135,8 @@ function checkCollision() {
       keyStatus.down = false;
       keyStatus.left = false;
       keyStatus.right = false;
-      alert('You used: ' + ((endTimeStamp - startTimeStamp)/1000) + 's');
+      alert('Your score: ' + gameData.score);
+      gameData.score = 0;
       $('#ballGameMode').text('自由模式');
       $('#startBallGame').text('Start');
     }
@@ -149,31 +153,58 @@ function nearlyHit() {
 }
 
 let tick = 0;
-setInterval(() => {
-  tick += 1;
-    if (tick % 30 === 0) {
-      increaseScore();    
-    }
-  moveEnemy();
-  moveAvatar();
-  checkCollision();
-  render();
-}, 1000 / 120);
+if ($('#ballGameMode').text() == '自由模式') {
+  setInterval(() => {
+    moveEnemy();
+    moveAvatar();
+    checkCollision();
+    render();
+  }, 1000 / 120);
+} else {
+  setInterval(() => {
+    tick += 1;
+      if (tick % 30 === 0) {
+        increaseScore();    
+      }
+    moveEnemy();
+    moveAvatar();
+    checkCollision();
+    render();
+  }, 1000 / 120);
+}
+
 
 $('#startBallGame').on('click', () => {
     if ($('#startBallGame').text() == 'Stop') {
-      endTimeStamp = Date.now();
-      alert('You used: ' + ((endTimeStamp - startTimeStamp)/1000) + 's');
+      if ($('#ballGameMode').text() == 'Difficulty: Quahkmatically Easy') {
+        clearTimeout(level2);
+        console.log('success');
+      }
+      gameData.enemyX = 0;
+      gameData.enemyY = 0;
+      gameData.enemySpeed = 1;
+      gameData.speed = 2;
+      gameData.x = 200;
+      gameData.y = 200;
+      keyStatus.top = false;
+      keyStatus.down = false;
+      keyStatus.left = false;
+      keyStatus.right = false;
+      alert('Your score: ' + gameData.score);
+      gameData.score = 0;
+      $('#ballGameMode').text('自由模式');
+      $('#startBallGame').text('Start');
     }
 
     $('#ballGameMode').text('Difficulty: Quahkmatically Easy');
+   
     gameData.enemyX = 0;
     gameData.enemyY = 0;
     gameData.x = 200;
     gameData.y = 200;
     startTimeStamp = Date.now();
     $('#startBallGame').text('Stop');
-    setTimeout(() => {
+    level2 = setTimeout(() => {
         $('#ballGameMode').text('Difficulty: Super Easy');
         gameData.speed = 3;
         gameData.enemySpeed = 2;
