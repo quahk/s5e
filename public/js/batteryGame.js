@@ -1,3 +1,5 @@
+(function() {
+
 let chargedPercentage = 0;
 let startTimeStamp;
 let endTimeStamp;
@@ -71,3 +73,5 @@ $('#toggle').on('click', () => {
         $('#batteryGame').hide();
     }
 })
+
+})();

@@ -62,6 +62,11 @@ button {
   font-family: ProductSans;
 }
 
+a:visited {
+  color: transparent;
+  outline-color: transparent;
+}
+
 button:hover {
   background:#e4e4e4;
   border-radius: 2%;
@@ -98,7 +103,6 @@ button:focus {
 #randomStudentPicker {
   display: none;
   position: fixed; /* Sit on top of the page content */
-  
   width: 100%; /* Full width (cover the whole page) */
   height: 100%; /* Full height (cover the whole page) */
   padding: 2.5em;
@@ -110,13 +114,12 @@ button:focus {
   background-color: #fff;
 }
 
-#countGame {
+#ballGame {
+  display: none;
   position: fixed; /* Sit on top of the page content */
-  display: none; /* Hidden by default */
   width: 100%; /* Full width (cover the whole page) */
   height: 100%; /* Full height (cover the whole page) */
   padding: 2.5em;
-  padding-top: 10%;
   top: 0;
   left: 0;
   right: 0;
@@ -124,29 +127,36 @@ button:focus {
   background-color: #fff;
 }
 
-#message {
-  font-size: 2em;
-  font-weight: bold;
-  font-style: italic;
-  text-align: center;
-  line-height: 100px;
+#ballGameFrame {
+    position: relative;
+    border: 3px solid black;
+    height: 80vh;
 }
 
-#numbers {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));  
-  grid-column-gap: 3px;
-  grid-row-gap: 3px;
+#ballGame button {
+  width: 10%;
+  height: 10%;
+  margin-left: 2em;
+  margin-bottom: 1.5em;
+  font-size: 1.5em;
 }
-#numbers .number {
-  border: 1px solid gold;
-  background: lightyellow;
-  padding: 1em;  
-  text-align: center;
-  cursor: pointer;
+
+#avatar {
+    width: 20px;
+    height: 20px;
+    background: gold;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
-#numbers .number:hover {
-  background: yellow;
+
+.enemy {
+    width: 20px;
+    height: 20px;
+    background: red;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 nav {
